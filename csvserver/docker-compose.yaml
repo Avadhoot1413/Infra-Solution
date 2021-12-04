@@ -1,0 +1,18 @@
+ version: "3"
+
+ services:
+   app:
+     image: infracloudio/csvserver:latest
+     ports:
+       - 9393:9300
+     volumes:
+       - /usr/local/Avadhoot/csvserver/inputFile:/csvserver/inputdata
+     environment:
+       CSVSERVER_BORDER: Orange
+
+   Prometheus:
+     image: prom/prometheus:v2.22.0
+     ports:
+       - 9090:9090
+     volumes:
+       - /usr/local/Avadhoot/csvserver/prometheus.yml:/etc/prometheus/prometheus.yml
